@@ -1,18 +1,38 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+
 public class SubscribeTest {
-    public static void main(String[] args) {
+    private WebDriver driver;
+
+    @Before
+    public void method(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        subscribe();
+        driver = new ChromeDriver();
+        driver.get("http://testfasttrackit.info/selenium-test/");
 
     }
-    public static void subscribe(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#newsletter")).sendKeys("rusulorena@yahoo.com");
+
+    @Test
+    public void subscribeNewEmail(){
+        Random number = new Random();
+        driver.findElement(By.cssSelector("#newsletter")).sendKeys("test"+number.nextInt() + "@yahoo.com");
         driver.findElement(By.cssSelector("#newsletter-validate-detail > div > div.actions > button > span > span")).click();
+        assertEquals("Subscribe successful","Thank you for your subscription.",
+                driver.findElement(By.cssSelector(".success-msg > ul > li > span")).getText());
+    }
+
+    @After
+
+    public void exit(){
         driver.quit();
+
     }
 }

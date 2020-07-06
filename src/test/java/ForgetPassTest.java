@@ -25,14 +25,14 @@ public class ForgetPassTest {
 
     public void forgettPassword() {
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
-        driver.findElement(By.cssSelector("#login-form > div > div.col-2.registered-users > div.content.fieldset > ul > li:nth-child(3) > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li.last a[title='Log In']")).click();
+        driver.findElement(By.cssSelector("ul.form-list a.f-left")).click();
         assertEquals("Can you re-enter the pass.", "RETRIEVE YOUR PASSWORD HERE",
                 driver.findElement(By.cssSelector("#form-validate > div.fieldset > h2")).getText());
         driver.findElement(By.id("email_address")).sendKeys("rusulorena@gmail.com");
-        driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button > span > span")).click();
-        assertTrue(driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"))
+        driver.findElement(By.cssSelector("div.buttons-set >button > span> span")).click();
+        assertTrue(driver.findElement(By.cssSelector("li.success-msg span"))
                 .getText().contains("you will receive an email with a link to reset your password."));
 
     }

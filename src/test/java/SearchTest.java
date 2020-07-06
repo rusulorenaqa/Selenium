@@ -20,9 +20,9 @@ public class SearchTest {
     @Test
     public void searchtest(){
         driver.findElement(By.id("search")).sendKeys("tops");
-        driver.findElement(By.cssSelector("#search_mini_form > div.input-box > button")).click();
+        driver.findElement(By.cssSelector("div.input-box button")).click();
         assertEquals("Searching ok", "SEARCH RESULTS FOR 'TOPS'",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.page-title > h1")).getText());
+                driver.findElement(By.cssSelector("div.page-title h1")).getText());
 
 
     }

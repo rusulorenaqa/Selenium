@@ -24,9 +24,9 @@ public class SubscribeTest {
     public void subscribeNewEmail(){
         Random number = new Random();
         driver.findElement(By.cssSelector("#newsletter")).sendKeys("test"+number.nextInt() + "@yahoo.com");
-        driver.findElement(By.cssSelector("#newsletter-validate-detail > div > div.actions > button > span > span")).click();
+        driver.findElement(By.cssSelector("div.actions button[title='Subscribe'] >span >span")).click();
         assertEquals("Subscribe successful","Thank you for your subscription.",
-                driver.findElement(By.cssSelector(".success-msg > ul > li > span")).getText());
+                driver.findElement(By.cssSelector("li.success-msg ul li span")).getText());
     }
 
     @After

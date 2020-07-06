@@ -21,12 +21,12 @@ public class WishListTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li.last a[title='Log In']")).click();
         driver.findElement(By.id("email")).sendKeys("rusulorena@gmail.com");
         driver.findElement(By.id("pass")).sendKeys("parola");
-        driver.findElement(By.cssSelector("#send2 > span > span")).click();
-        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!",driver.findElement(By.cssSelector("body > div > div.page > div.header-language-background > div > p")).getText());
+        driver.findElement(By.id("send2")).click();
+        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!",driver.findElement(By.cssSelector("p.welcome-msg")).getText());
 
     }
     @Test
@@ -35,8 +35,8 @@ public class WishListTest {
         driver.findElement(By.className("nav-5")).click();
         driver.findElement(By.className("link-wishlist")).click();
         assertEquals("You re at wishlist","MY WISHLIST",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div.my-wishlist > div > h1")).getText());
-        assertTrue(driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div.my-wishlist > ul > li > ul > li > span")).getText().contains("has been added to your wishlist"));
+                driver.findElement(By.cssSelector("div.page-title h1")).getText());
+        assertTrue(driver.findElement(By.cssSelector("ul.messages li.success-msg span")).getText().contains("has been added to your wishlist"));
     }
     @After
 

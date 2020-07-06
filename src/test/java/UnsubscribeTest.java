@@ -16,12 +16,12 @@ public class UnsubscribeTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li.last a[title='Log In']")).click();
         driver.findElement(By.id("email")).sendKeys("rusulorena@gmail.com");
         driver.findElement(By.id("pass")).sendKeys("parola");
-        driver.findElement(By.cssSelector("#send2 > span > span")).click();
-        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!", driver.findElement(By.cssSelector("body > div > div.page > div.header-language-background > div > p")).getText());
+        driver.findElement(By.id("send2")).click();
+        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!", driver.findElement(By.cssSelector("p.welcome-msg")).getText());
 
 
     }
@@ -30,11 +30,11 @@ public class UnsubscribeTest {
 
     public void unsubscribe() {
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.first > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("#header-account a[title='My Account'] ")).click();
         assertEquals("You re in Dashboard.", "MY DASHBOARD",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.page-title > h1")).getText());
-        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-left.sidebar.col-left-first > div > div.block-content > ul > li:nth-child(10) > a")).click();
+                driver.findElement(By.cssSelector("div.page-title h1")).getText());
+        driver.findElement(By.cssSelector("div.block-content a[href='http://testfasttrackit.info/selenium-test/newsletter/manage/']")).click();
         driver.findElement(By.id("subscription")).click();
 
     }

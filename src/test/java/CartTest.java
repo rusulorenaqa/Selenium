@@ -27,11 +27,11 @@ public class CartTest {
         builder.moveToElement(driver.findElement(By.className("nav-4"))).perform();
         driver.findElement(By.className("nav-4-2")).click();
         assertEquals("Bed and Bath screen reached","BED & BATH",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.page-title.category-title > h1")).getText());
-        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li:nth-child(1) > div > div.actions > button")).click();
+                driver.findElement(By.cssSelector("div.page-title > h1")).getText());
+        driver.findElement(By.cssSelector("ul.products-grid li:first-child div.actions button[title='Add to Cart']")).click();
         assertEquals("Cart page reached", "SHOPPING CART",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > div.page-title.title-buttons > h1")).getText());
-        assertTrue(driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > ul > li > ul > li > span"))
+                driver.findElement(By.cssSelector("div.page-title > h1")).getText());
+        assertTrue(driver.findElement(By.cssSelector("li.success-msg span"))
                 .getText().contains("was added to your shopping cart."));
     }
 

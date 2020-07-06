@@ -22,8 +22,8 @@ public class RegisterTest {
         @Test
 
     public void register() {
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li:nth-child(5) a[title='Register']")).click();
         driver.findElement(By.id("firstname")).sendKeys("Rusu");
         driver.findElement(By.id("middlename")).sendKeys("Lorena");
         driver.findElement(By.id("lastname")).sendKeys("Florina");
@@ -32,23 +32,23 @@ public class RegisterTest {
         driver.findElement(By.id("password")).sendKeys("123456");
         driver.findElement(By.id("confirmation")).sendKeys("123456");
         driver.findElement(By.id("is_subscribed")).click();
-        driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button")).click();
+        driver.findElement(By.cssSelector("div.buttons-set > button")).click();
         assertEquals("Register valid","Thank you for registering with Madison Island.",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > ul > li > ul > li > span")).getText());
+                driver.findElement(By.cssSelector(".success-msg span")).getText());
 
     }
     @Test
 
     public void registerWithoutEmail() {
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li:nth-child(5) a[title='Register']")).click();
         driver.findElement(By.id("firstname")).sendKeys("Rusu");
         driver.findElement(By.id("middlename")).sendKeys("Lorena");
         driver.findElement(By.id("lastname")).sendKeys("Florina");
         driver.findElement(By.id("password")).sendKeys("123456");
         driver.findElement(By.id("confirmation")).sendKeys("123456");
         driver.findElement(By.id("is_subscribed")).click();
-        driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button")).click();
+        driver.findElement(By.cssSelector("div.buttons-set > button")).click();
         assertEquals("Can't connect without email","This is a required field.",
                 driver.findElement(By.id("advice-required-entry-email_address")).getText());
 
@@ -56,14 +56,14 @@ public class RegisterTest {
     @Test
 
     public void registerWithoutPass() {
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li:nth-child(5) a[title='Register']")).click();
         driver.findElement(By.id("firstname")).sendKeys("Rusu");
         driver.findElement(By.id("middlename")).sendKeys("Lorena");
         driver.findElement(By.id("lastname")).sendKeys("Florina");
         driver.findElement(By.id("email_address")).sendKeys("rusulorena@yahoo.com");
         driver.findElement(By.id("is_subscribed")).click();
-        driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button")).click();
+        driver.findElement(By.cssSelector("div.buttons-set > button")).click();
         assertEquals("Can t connect without password","This is a required field.",
                 driver.findElement(By.id("advice-required-entry-password")).getText());
 
@@ -71,13 +71,13 @@ public class RegisterTest {
     @Test
 
     public void registerWithoutName() {
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li:nth-child(5) a[title='Register']")).click();
         driver.findElement(By.id("email_address")).sendKeys("rusulorena@yahoo.com");
         driver.findElement(By.id("password")).sendKeys("123");
         driver.findElement(By.id("confirmation")).sendKeys("123");
         driver.findElement(By.id("is_subscribed")).click();
-        driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button")).click();
+        driver.findElement(By.cssSelector("div.buttons-set > button")).click();
         assertEquals("Can t connect without name.","This is a required field.",
                 driver.findElement(By.id("advice-required-entry-firstname")).getText());
         assertEquals("Can t connect without name.","This is a required field.",

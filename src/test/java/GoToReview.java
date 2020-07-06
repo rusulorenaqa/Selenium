@@ -27,10 +27,10 @@ public class GoToReview {
         builder.moveToElement(driver.findElement(By.className("nav-3"))).perform();
         driver.findElement(By.className("nav-3-2")).click();
         driver.findElement(By.id("product-collection-image-549")).click();
-        driver.findElement(By.cssSelector("body > div.wrapper > div.page > div.main-container.col1-layout > div > div.col-main > div.product-view > div.product-collateral.toggle-content.tabs > ul > li.last")).click();
-        driver.findElement(By.cssSelector("#customer-reviews > p > a")).click();
-        assertEquals("Write yout own review", "WRITE YOUR OWN REVIEW",
-                driver.findElement(By.cssSelector("#customer-reviews > div > h2")).getText());
+        driver.findElement(By.cssSelector("div.product-collateral li.last")).click();
+        driver.findElement(By.cssSelector("a[href='http://testfasttrackit.info/selenium-test/review/product/list/id/549/category/19/#review-form']")).click();
+        assertEquals("Write your own review", "WRITE YOUR OWN REVIEW",
+                driver.findElement(By.cssSelector("div.form-add h2")).getText());
 
     }
 

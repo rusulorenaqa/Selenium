@@ -20,12 +20,12 @@ public class EmptyCartTest {
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         //Inainte sa adaugi in cart, trebuei sa fii logat.
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("div.account-cart-wrapper > a > span.label")).click();
+        driver.findElement(By.cssSelector("div.links li.last a[title='Log In']")).click();
         driver.findElement(By.id("email")).sendKeys("rusulorena@gmail.com");
         driver.findElement(By.id("pass")).sendKeys("parola");
-        driver.findElement(By.cssSelector("#send2 > span > span")).click();
-        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!", driver.findElement(By.cssSelector("body > div > div.page > div.header-language-background > div > p")).getText());
+        driver.findElement(By.id("send2")).click();
+        assertEquals("You can login with valid credentials!", "WELCOME, RUSU LORENA LORENA!", driver.findElement(By.cssSelector("p.welcome-msg")).getText());
 
 
         //Dupa login, trebuie sa adaugi in cart, ca sa putem utiliza motoda de checkout.
@@ -33,11 +33,11 @@ public class EmptyCartTest {
         builder.moveToElement(driver.findElement(By.className("nav-4"))).perform();
         driver.findElement(By.className("nav-4-2")).click();
         assertEquals("Bed and Bath screen reached", "BED & BATH",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.page-title.category-title > h1")).getText());
-        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li:nth-child(1) > div > div.actions > button")).click();
+                driver.findElement(By.cssSelector("div.page-title > h1")).getText());
+        driver.findElement(By.cssSelector("ul.products-grid li:first-child div.actions button[title='Add to Cart']")).click();
         assertEquals("Cart page reached", "SHOPPING CART",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > div.page-title.title-buttons > h1")).getText());
-        assertTrue(driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > ul > li > ul > li > span"))
+                driver.findElement(By.cssSelector("div.page-title > h1")).getText());
+        assertTrue(driver.findElement(By.cssSelector("li.success-msg span"))
                 .getText().contains("was added to your shopping cart."));
     }
 
@@ -46,7 +46,7 @@ public class EmptyCartTest {
     public void emptyCart(){
         driver.findElement(By.id("empty_cart_button")).click();
         assertEquals("Empty cart", "SHOPPING CART IS EMPTY",
-                driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.page-title > h1")).getText());
+                driver.findElement(By.cssSelector("div.page-title > h1")).getText());
     }
 
     @After
